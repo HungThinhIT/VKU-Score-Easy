@@ -1,7 +1,7 @@
 {
   "name": "VKU Easy Score",
-  "description": "Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác lúc đánh giá để xem điểm số của hệ thống Vê Ca Du.",
-  "version": "0.1.0",
+  "description": "Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác lúc đánh giá để xem điểm số của hệ thống VKU.",
+  "version": "1.0",
   "manifest_version": 3,
   "icons": {
     "16": "./icons/logo-16x16.png",
@@ -12,7 +12,9 @@
   "background": {
     "service_worker": "wrapper.js"
   },
-  "action": {},
+  "action": {
+    "default_popup": "popup.html"
+  },
   "permissions": [
     "tabs",
     "cookies",
@@ -21,7 +23,6 @@
   "host_permissions": [
     "http://daotao.vku.udn.vn/*"
   ],
-  "options_page": "options.html",
   "content_scripts": [
     {
       "matches": [
@@ -30,15 +31,15 @@
       "all_frames": true,
       "js": [
         "jquery.min.js",
-        "content-script.js"
+        "js/Main.js",
+        "js/BypassHelpers.js",
+        "js/BypassFeedback.js"
       ]
     }
   ],
   "web_accessible_resources": [
     {
       "resources": [
-        "test3.png",
-        "test4.png"
       ],
       "matches": [
         "http://daotao.vku.udn.vn/*"

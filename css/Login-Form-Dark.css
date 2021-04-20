@@ -1,0 +1,80 @@
+.login-dark {
+  width: 320px;
+  height: 450px;
+  background: #475d62 url(../img/img.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+h3.header {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 26px;
+    color: #6f7a85;
+}
+
+.login-dark form {
+  width: 300px;
+  background-color: #1e2833;
+  padding: 40px;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.login-dark form .form-control {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #434a52;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+}
+
+.login-dark form .btn-primary {
+  background: #214a80;
+  border: none;
+  border-radius: 4px;
+  padding: 11px;
+  box-shadow: none;
+  margin-top: 26px;
+  text-shadow: none;
+  outline: none;
+}
+
+.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+  background: #214a80;
+  outline: none;
+}
+
+.login-dark form .about {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #6f7a85;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.login-dark form .about:hover, .login-dark form .about:active {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.login-dark form .btn-primary:active {
+  transform: translateY(1px);
+}
+.form-check-label{
+  display: block;
+  font-size: 13px;
+  color: #6f7a85;
+  opacity: 0.9;
+  text-decoration: none;
+  color: #6f7a85;
+}

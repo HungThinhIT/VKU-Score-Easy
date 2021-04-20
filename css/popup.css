@@ -1,0 +1,43 @@
+div#main-outer {
+    width: 320px;
+    margin: 5px;
+    background: #DDD;
+    border-radius: 10px;
+}
+
+div#main-inner {
+    padding: 8px;
+}
+
+div#main-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+img#main-image {
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    margin-top: 16px;
+    text-align: left;
+}
+a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    margin-top: 16px;
+    text-align: left;
+}
+span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    margin-top: 16px;
+    text-align: left;
+}
