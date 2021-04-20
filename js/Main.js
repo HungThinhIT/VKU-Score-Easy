@@ -4,7 +4,7 @@ $(document).ready(async function () {
     $('head').contents()
         .filter(function () {
             return this.nodeType === 8 && this.textContent.includes('<meta name="csrf-token"')
-        }).replaceWith(function(){return this.data;})
+        }).replaceWith(function () { return this.data; })
 
     // var csrf = $('meta[name=csrf-token]').attr('content');
     // console.log(c);
@@ -19,7 +19,7 @@ $(document).ready(async function () {
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>VKU Score Easy Panel (Use at your own risk) v1.0</h2>
+                <h2 style="color: red; font-weight:bold">VKU Score Easy Panel (Use at your own risk) v1.0.1</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -46,15 +46,26 @@ $(document).ready(async function () {
                         </div>
                     </div>
                 </div>
-               
+                <div class="d-flex flex-row-reverse">
+                    <div style="text-align: right">© 2021 - Từ một người dùng cả thanh xuân của mình để đi đánh giá học phần :< </div>
+                </div>
             </div>
         </div>
     </div>`;
 
     function initialPanel() {
         window.location.href.includes('http://daotao.vku.udn.vn/sv/diem')
-            ? $("body > div > div > div.right_col > div > div.row").prepend(rawBody) : '';
-        $('.form-step-1').hide();
+            ? $("body > div > div > div.right_col > div > div.row").prepend(rawBody) : 
+            $('.navbar-right').append(`
+            <li class>
+                <a href="http://daotao.vku.udn.vn/sv/diem" class="user-profile dropdown-toggle" >
+                    Xem điểm nhanh nè mọi ngườiiii!
+                </a>
+            </li>`);
+
+            $('.form-step-1').hide();;
+
+        
     }
 
     /**
@@ -81,7 +92,7 @@ $(document).ready(async function () {
                 await bypassFeedbackStepOne(await response.cookies, subjectsStep1);
             });
         });
-        
+
         $("#phoenix_feedbackStep2").click(function () {
             countS2 = 0;
             $('.text-status-log').val('');

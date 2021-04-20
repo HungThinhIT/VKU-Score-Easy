@@ -17,5 +17,10 @@ Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác l
 
 
 ## Changelogs
-### 20-04-2021 (dd-mm-yyyy)
+
+### Release version 1.0.1 (20-04-2021)
+- Fixed do not show panel on some prefix url.
+- Add quick button to access score
+
+### Release version 1.0.0 (20-04-2021)
 - Release version 1.0

@@ -18,10 +18,6 @@ console.log("Xin chao ba con");
 chrome.action.onClicked.addListener(async (tab) => {
     // const url = "hungthinhit.com";
     // const res = await fetch(url, { credentials: "include" });
-
-
-
-    console.log(cookies);
 });
 
 async function getCookies() {
