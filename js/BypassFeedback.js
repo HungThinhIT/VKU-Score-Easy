@@ -84,11 +84,13 @@ async function executeAjaxToStepOne(headers, idClass, subjectName) {
             console.log(jQxhr.status);
             if (jQxhr.status == 200) {
                 console.log("fetched successfully");
+                var oldText = $('.text-status-log').val();
                 $('.text-status-log').val(`${oldText}${subjectName} - [Đã đánh giá xong ✓] \n`).change();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
+            var oldText = $('.text-status-log').val();
             $('.text-status-log').val(`${oldText}${subjectName} - [Dánh giá thất bại x] \n`).change();
         }
     });
@@ -114,6 +116,7 @@ async function executeAjaxToStepTwo(headers, idClass, subjectName) {
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
+            var oldText = $('.text-status-log').val();
             $('.text-status-log').val(`${oldText}${subjectName} - [Dánh giá thất bại x] \n`).change();
 
         }
