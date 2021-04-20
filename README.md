@@ -3,7 +3,7 @@ Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác l
 ### Cách cài đặt 
 - [Tải về](https://github.com/HungThinh0710/VKU-Easy-Score/releases) (Hoặc clone về)
 - Giải nén ra thư mục riêng
-- Vào trình duyệt (Chrome/Edge/Brave,...).
+- Vào trình duyệt (Chrome/Edge/Brave/CocCoc, ...).
 - Vào tiện ích (Extension) bật chế độ nhà phát triển (Developer mode)
 - Chọn "tải tiện ích đã giải nén" (Load unpacked)
 - Chọn tới thu mục đã giải nén
