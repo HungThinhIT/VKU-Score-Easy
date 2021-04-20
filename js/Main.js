@@ -52,7 +52,7 @@ $(document).ready(async function () {
     </div>`;
 
     function initialPanel() {
-        window.location.href == 'http://daotao.vku.udn.vn/sv/diem'
+        window.location.href.includes('http://daotao.vku.udn.vn/sv/diem')
             ? $("body > div > div > div.right_col > div > div.row").prepend(rawBody) : '';
         $('.form-step-1').hide();
     }
