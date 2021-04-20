@@ -1,7 +1,7 @@
 # VKU-Score-Easy
 Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác lúc đánh giá để xem điểm số của VKU.
 ### Cách cài đặt 
-- Tải về
+- [Tải về](https://github.com/HungThinh0710/VKU-Easy-Score/releases) (Hoặc clone về)
 - Giải nén ra thư mục riêng
 - Vào trình duyệt (Chrome/Edge/Brave,...).
 - Vào tiện ích (Extension) bật chế độ nhà phát triển (Developer mode)
