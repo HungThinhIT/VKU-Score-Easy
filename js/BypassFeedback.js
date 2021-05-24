@@ -91,7 +91,7 @@ async function executeAjaxToStepOne(headers, idClass, subjectName) {
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
             var oldText = $('.text-status-log').val();
-            $('.text-status-log').val(`${oldText}${subjectName} - [Dánh giá thất bại x] \n`).change();
+            $('.text-status-log').val(`${oldText}${subjectName} - [Đánh giá thất bại x] \n`).change();
         }
     });
 }

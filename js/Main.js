@@ -6,20 +6,23 @@ $(document).ready(async function () {
             return this.nodeType === 8 && this.textContent.includes('<meta name="csrf-token"')
         }).replaceWith(function () { return this.data; })
 
-    // var csrf = $('meta[name=csrf-token]').attr('content');
-    // console.log(c);
     //Initial variables
     const step1UrlFilterPrefix = 'http://daotao.vku.udn.vn/sv/khao-sat/cau-hoi-khao-sat/';
     const step2UrlFilterPrefix = '/sv/khao-sat-hoc-phan?id=';
     var subjectsStep1 = [];
     var subjectsStep2 = [];
     var subjectsDone = [];
+    var currentExtensionVersion = chrome.runtime.getManifest().version;
+    var isLastestVersion = true;
 
     let rawBody = `
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2 style="color: red; font-weight:bold">VKU Score Easy Panel (Use at your own risk) v1.0.1</h2>
+                <div style="display: flex; justify-content: space-between;">
+                    <h2 style="color: red; font-weight:bold">VKU Score Easy Panel (Use at your own risk) v${currentExtensionVersion}</h2>
+                    <h5 class="phoenix_current_version"></h5>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -47,7 +50,7 @@ $(document).ready(async function () {
                     </div>
                 </div>
                 <div class="d-flex flex-row-reverse">
-                    <div style="text-align: right">© 2021 - Từ một người dùng cả thanh xuân của mình để đi đánh giá học phần :< </div>
+                    <div style="text-align: right">© 2021 <a style="font-weight: bold" href="https://www.facebook.com/HungThinh0710/">Hưng Thịnh</a> - Năm tháng đó, tôi dùng cả thanh xuân để đánh giá học phần. </div>
                 </div>
             </div>
         </div>
@@ -64,8 +67,6 @@ $(document).ready(async function () {
             </li>`);
 
             $('.form-step-1').hide();;
-
-        
     }
 
     /**
@@ -116,9 +117,26 @@ $(document).ready(async function () {
     }
 
     function reloadCountData() {
+        $('.phoenix_current_version').html("");
+        
+        //Panel
         $('.phoenix_subjects_done_count').text(subjectsDone.length);
         $('.phoenix_subjects_step1_count').text(subjectsStep1.length);
         $('.phoenix_subjects_step2_count').text(subjectsStep2.length + subjectsStep1.length);
+
+        //Version
+        // if(isLastestVersion){
+        //     console.log("vao_case_1")
+        //     $('.phoenix_current_version').html("Đây là phiên bản mới nhất");
+        // }
+        // else{
+        //     console.log("vao_case_2")       
+        //     $('.phoenix_current_version').html(`Đã có phiên bản mới <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`);
+        // }
+
+        // isLastestVersion ? 
+        //     $('.phoenix_current_version').text("Đây là phiên bản mới nhất")
+        //     : $('.phoenix_current_version').html(`Đã có phiên bản mới <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`)
 
         subjectsStep1.length == 0 ? $('#phoenix_feedbackStep1').hide() : '';
         subjectsStep2.length == 0 ? $('#phoenix_feedbackStep2').hide() : $('#phoenix_feedbackStep2').show();
@@ -135,7 +153,7 @@ $(document).ready(async function () {
                 actionButtonHref = $tds.eq(11).find('a').attr('href');
             if (subjectName.length > 0) {
                 if (actionButtonText.length > 0) {
-                    switch (actionButtonText) {
+                    switch (actionButtonText.trim()) {
                         case 'Đánh giá lớp học phần':
                             return subjectsStep1.push(`${subjectName}|${filterIdHref(actionButtonHref, 1)}`);
                         case 'Đánh giá sự cần thiết của Học phần':
@@ -147,6 +165,28 @@ $(document).ready(async function () {
             }
             // do something with in for loop
         });
+
+        //Check new version
+
+        $.ajax({
+            url: 'https://api.github.com/repos/HungThinh0710/VKU-Score-Easy/tags',
+            type: 'GET',
+            success: function (data, textStatus, jQxhr) {
+                if (jQxhr.status == 200) {
+                    let payload = data;
+                    isLastestVersion = payload[0].name === currentExtensionVersion;
+                    isLastestVersion ? 
+                        $('.phoenix_current_version').text("Đây là phiên bản mới nhất")
+                        : $('.phoenix_current_version').html(`Đã có phiên bản mới (v${payload[0].name}) <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`)
+                }
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log("VKU SCORE EASY CHECK NEW VERSION ERROR: ")
+                console.log(errorThrown);
+
+            }
+        });
+
         reloadCountData();
     }
 

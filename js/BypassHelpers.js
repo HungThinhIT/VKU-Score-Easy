@@ -11,7 +11,7 @@ async function getHeadersCookies(cookiesArray) {
 
 
 function detectStatus(subjectsStep1, subjectsStep2) {
-    console.log("detectStatus_runner");
+    // console.log("detectStatus_runner"); // Debug only
     $('.text-status-log').on('change', function () {
         var typeStep = $('.type-step').val();
         if (typeStep == 1) {
