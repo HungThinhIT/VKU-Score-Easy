@@ -18,9 +18,14 @@ Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác l
 
 ## Changelogs
 
+### Release version 1.0.2 (24-05-2021)
+- Fixed: Can not bypass step1 & step 2. (up-to-date with daotao system)
+- Fixed: Misspelled.
+- Add: Check new version with github API.
+
 ### Release version 1.0.1 (20-04-2021)
 - Fixed do not show panel on some prefix url.
-- Add quick button to access score
+- Add quick button to access score.
 
 ### Release version 1.0.0 (20-04-2021)
-- Release version 1.0
+- Release version 1.0.

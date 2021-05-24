@@ -116,27 +116,10 @@ $(document).ready(async function () {
         return url.substring(step2UrlFilterPrefix.length);
     }
 
-    function reloadCountData() {
-        $('.phoenix_current_version').html("");
-        
-        //Panel
+    function reloadCountData() {        
         $('.phoenix_subjects_done_count').text(subjectsDone.length);
         $('.phoenix_subjects_step1_count').text(subjectsStep1.length);
         $('.phoenix_subjects_step2_count').text(subjectsStep2.length + subjectsStep1.length);
-
-        //Version
-        // if(isLastestVersion){
-        //     console.log("vao_case_1")
-        //     $('.phoenix_current_version').html("Đây là phiên bản mới nhất");
-        // }
-        // else{
-        //     console.log("vao_case_2")       
-        //     $('.phoenix_current_version').html(`Đã có phiên bản mới <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`);
-        // }
-
-        // isLastestVersion ? 
-        //     $('.phoenix_current_version').text("Đây là phiên bản mới nhất")
-        //     : $('.phoenix_current_version').html(`Đã có phiên bản mới <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`)
 
         subjectsStep1.length == 0 ? $('#phoenix_feedbackStep1').hide() : '';
         subjectsStep2.length == 0 ? $('#phoenix_feedbackStep2').hide() : $('#phoenix_feedbackStep2').show();
@@ -183,7 +166,7 @@ $(document).ready(async function () {
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log("VKU SCORE EASY CHECK NEW VERSION ERROR: ")
                 console.log(errorThrown);
-
+                $('.phoenix_current_version').text("Lỗi kiểm tra phiên bản mới")
             }
         });
 
