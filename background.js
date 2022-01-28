@@ -13,7 +13,6 @@ function showReadme(info, tab) {
     chrome.tabs.create({ url });
 }
 
-console.log("Xin chao ba con");
 
 chrome.action.onClicked.addListener(async (tab) => {
     // const url = "hungthinhit.com";

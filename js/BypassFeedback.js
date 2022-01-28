@@ -6,27 +6,38 @@ var countS2 = 0;
 
 async function bypassFeedbackStepOne(cookiesArray, subjectsStep1) {
     const cookies = await getHeadersCookies(cookiesArray); //Call from helpers
-
-    await subjectsStep1.forEach(async (element) => {
-        $('.form-step-1').show();
-        const subject = element.split('|');
-        await executeAjaxToStepOne(cookies, subject[1], subject[0])
-
+    var looper = $.Deferred().resolve();
+    $.when.apply($, $.map(subjectsStep1, function (item, i) {
+        looper = looper.then(function () {
+            $('.form-step-1').show();
+            const subject = item.split('|');
+            // console.log(subject); // Debug only
+            return executeAjaxToStepOne(cookies, subject[1], subject[0]);
+        });
+        return looper;
+    })).then(function () {
+        console.log('STEP 1: Done');
     });
 }
 
 async function bypassFeedbackStepTwo(cookiesArray, subjectsStep2) {
     const cookies = await getHeadersCookies(cookiesArray); //Call from helpers
-    await subjectsStep2.forEach(async (element) => {
-        $('.form-step-1').show();
-        const subject = element.split('|');
-        console.log(subject);
-        await executeAjaxToStepTwo(cookies, subject[1], subject[0])
+    var looper = $.Deferred().resolve();
+    $.when.apply($, $.map(subjectsStep2, function (item, i) {
+        looper = looper.then(function () {
+            $('.form-step-1').show();
+            const subject = item.split('|');
+            // console.log(subject); // Debug only
+            return executeAjaxToStepTwo(cookies, subject[1], subject[0]);
+        });
+        return looper;
+    })).then(function () {
+        console.log('STEP 2: Done');
     });
 
 }
 
-async function executeAjaxToStepOne(headers, idClass, subjectName) {
+function executeAjaxToStepOne(headers, idClass, subjectName) {
     var csrf = $('meta[name=csrf-token]').attr('content');
 
     var data = new FormData();
@@ -69,7 +80,7 @@ async function executeAjaxToStepOne(headers, idClass, subjectName) {
     data.append('tuluan[]', ' ');
     data.append('tuluan[]', ' ');
     data.append('idlop', idClass);
-    
+
     $.ajax({
         url: step1SubmitFeedbackUrl + idClass,
         headers: {
@@ -83,25 +94,30 @@ async function executeAjaxToStepOne(headers, idClass, subjectName) {
         success: function (data, textStatus, jQxhr) {
             console.log(jQxhr.status);
             if (jQxhr.status == 200) {
-                console.log("fetched successfully");
+                console.log(`Đánh giá thành công môn ${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')}`);
+                deferred.resolve();
                 var oldText = $('.text-status-log').val();
-                $('.text-status-log').val(`${oldText}${subjectName} - [Đã đánh giá xong ✓] \n`).change();
+                $('.text-status-log').val(`${oldText}${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')} - [Đã đánh giá xong ✓] \n`).change();
+                $('.text-status-log').blur();
+                $('.text-status-log').focus();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
+            console.log(`Đã có lỗi trong quá trình đánh giá môn ${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')}`);
+            deferred.reject();
             var oldText = $('.text-status-log').val();
-            $('.text-status-log').val(`${oldText}${subjectName} - [Đánh giá thất bại x] \n`).change();
+            $('.text-status-log').val(`${oldText}${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')} - [Đánh giá thất bại x] \n`).change();
         }
     });
 }
 
-async function executeAjaxToStepTwo(headers, idClass, subjectName) {
-    // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    console.log("url=" + step2SubmitFeedbackUrl + idClass + '&value=1');
+
+function executeAjaxToStepTwo(headers, idClass, subjectName) {
+    // console.log("URI=" + step2SubmitFeedbackUrl + idClass + '&value=2'); // Debug only
+    var deferred = $.Deferred();
 
     $.ajax({
-        url: step2SubmitFeedbackUrl + idClass + '&value=1',
+        url: step2SubmitFeedbackUrl + idClass + '&value=2',
         headers: {
             headers,
         },
@@ -109,16 +125,21 @@ async function executeAjaxToStepTwo(headers, idClass, subjectName) {
         success: function (data, textStatus, jQxhr) {
             console.log(jQxhr.status);
             if (jQxhr.status == 200) {
-                console.log("fetched successfully");
+                console.log(`Đánh giá thành công môn ${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')}`);
+                deferred.resolve();
                 var oldText = $('.text-status-log').val();
-                $('.text-status-log').val(`${oldText}${subjectName} - [Đã đánh giá xong ✓] \n`).change();
+                $('.text-status-log').val(`${oldText}${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')} - [Đã đánh giá xong ✓] \n`).change();
+                $('.text-status-log').blur();
+                $('.text-status-log').focus();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
+            console.log(`Đã có lỗi trong quá trình đánh giá môn ${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')}`);
+            deferred.reject();
             var oldText = $('.text-status-log').val();
-            $('.text-status-log').val(`${oldText}${subjectName} - [Dánh giá thất bại x] \n`).change();
+            $('.text-status-log').val(`${oldText}${subjectName.replace(/(\r\n|\n|\r|\t)/gm,'')} - [Đánh giá thất bại x] \n`).change();
 
         }
     });
+    return deferred.promise();
 }

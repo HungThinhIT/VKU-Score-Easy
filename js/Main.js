@@ -1,5 +1,6 @@
 $(document).ready(async function () {
     console.log("VKU Easy Score extension is ready!");
+    console.log("Không khuyến khích sử dụng tiện ích này, hãy đánh giá bằng tay để thật sự đóng góp ý kiến cho nhà trường nhé!");
 
     $('head').contents()
         .filter(function () {
@@ -29,12 +30,13 @@ $(document).ready(async function () {
                 <p></p>
                 <div class="row">
                     <div class="col-md-7 col-sm-12 col-xs-12">
-                        <div> Thông tin đánh giá</div>
+                        <div> Thông tin đánh giá:</div>
                         <ul>
                             <li>Môn đã hoàn thành đánh giá: <b><span class="phoenix_subjects_done_count">0</span></b> môn</li>
                             <li>Môn chưa đánh giá bước 1:  <b><span class="phoenix_subjects_step1_count">0</span></b> môn (Đánh giá lớp học phần)</li>
                             <li>Môn chưa đánh giá bước 2:  <b><span class="phoenix_subjects_step2_count">0</span></b> môn (Đánh giá sự cần thiết của học phần)</li>
                         </ul>
+                        <div> Lặp lại bước đánh giá nếu chưa hiện tất cả điểm.</div>
                         <div class="btn-group">
                         <button id="phoenix_feedbackStep1" class="btn btn-primary">Đánh giá nhanh bước 1 </button>
                         <button id="phoenix_feedbackStep2" class="btn btn-success">Đánh giá nhanh bước 2 </button>
@@ -50,14 +52,14 @@ $(document).ready(async function () {
                     </div>
                 </div>
                 <div class="d-flex flex-row-reverse">
-                    <div style="text-align: right">© 2021 <a style="font-weight: bold" href="https://www.facebook.com/HungThinh0710/">Hưng Thịnh</a> - Năm tháng đó, tôi dùng cả thanh xuân để đánh giá học phần. </div>
+                    <div style="text-align: right">© 2022 <a style="font-weight: bold" href="https://www.facebook.com/HungThinh0710/">Hưng Thịnh</a> - Năm tháng đó, tôi dùng cả thanh xuân để đánh giá học phần. </div>
                 </div>
             </div>
         </div>
     </div>`;
 
     function initialPanel() {
-        window.location.href.includes('http://daotao.vku.udn.vn/sv/diem')
+        window.location.href.includes('daotao.vku.udn.vn/sv/diem')
             ? $("body > div > div > div.right_col > div > div.row").prepend(rawBody) : 
             $('.navbar-right').append(`
             <li class>
@@ -65,7 +67,6 @@ $(document).ready(async function () {
                     Xem điểm nhanh nè mọi ngườiiii!
                 </a>
             </li>`);
-
             $('.form-step-1').hide();;
     }
 
@@ -140,13 +141,12 @@ $(document).ready(async function () {
                         case 'Đánh giá lớp học phần':
                             return subjectsStep1.push(`${subjectName}|${filterIdHref(actionButtonHref, 1)}`);
                         case 'Đánh giá sự cần thiết của Học phần':
-                            console.log(actionButtonHref);
+                            // console.log(actionButtonHref);
                             return subjectsStep2.push(`${subjectName}|${filterIdHref(actionButtonHref, 2)}`);
                     }
                 }
                 return subjectsDone.push(subjectName);
             }
-            // do something with in for loop
         });
 
         //Check new version

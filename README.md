@@ -18,6 +18,10 @@ Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác l
 
 ## Changelogs
 
+### Release version 1.0.3 (29-01-2022)
+- Refactor: Send feedback requests sequentially instead of all at the same time.
+- Fixed: Misspelled.
+
 ### Release version 1.0.2 (24-05-2021)
 - Fixed: Can not bypass step1 & step 2. (up-to-date with daotao system)
 - Fixed: Misspelled.
