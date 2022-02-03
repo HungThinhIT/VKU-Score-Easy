@@ -1,6 +1,6 @@
 # VKU-Score-Easy
-Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác lúc đánh giá để xem điểm số của VKU.
-Mình đã ra trường nên không thể tiếp tục maintain extension này được, các bạn sinh viên fork để phát triển tiếp nhé.
+#### Một tiện ích trình duyệt giúp vượt qua 1 nghìn 900 tỷ thao tác lúc đánh giá để xem điểm số của VKU.
+#### Mình đã ra trường nên không thể tiếp tục maintain extension này được, các bạn sinh viên fork để phát triển tiếp nhé.
 
 ### Cách cài đặt 
 - [Tải về](https://github.com/HungThinhIT/VKU-Easy-Score/releases) (Hoặc clone về)
@@ -15,7 +15,7 @@ Mình đã ra trường nên không thể tiếp tục maintain extension này �
 - Kéo lên trên đầu tiên
 - Thấy cái gì thì bấm thôi chứ hổng biết chỉ sao :v 
 
-![screenshot](https://github.com/HungThinhIT/VKU-Easy-Score/blob/master/caifileanhnay_nanghoncacode_project.png)
+![screenshot](https://github.com/HungThinhIT/VKU-Score-Easy/blob/master/caifileanhnay_nanghoncacode_project.png)
 
 
 ## Changelogs
