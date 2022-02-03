@@ -1,6 +1,6 @@
-const step1SubmitFeedbackUrl = "http://daotao.vku.udn.vn/sv/khao-sat/cau-hoi-khao-sat/";
-const step2SubmitFeedbackUrl = "http://daotao.vku.udn.vn/sv/cap-nhat-khao-sat-hoc-phan?hocphan_id=";
-// http://daotao.vku.udn.vn/sv/cap-nhat-khao-sat-hoc-phan?hocphan_id=6&value=1
+const step1SubmitFeedbackUrl = "https://daotao.vku.udn.vn/sv/khao-sat/cau-hoi-khao-sat/";
+const step2SubmitFeedbackUrl = "https://daotao.vku.udn.vn/sv/cap-nhat-khao-sat-hoc-phan?hocphan_id=";
+// https://daotao.vku.udn.vn/sv/cap-nhat-khao-sat-hoc-phan?hocphan_id=6&value=1
 var countS1 = 0;
 var countS2 = 0;
 

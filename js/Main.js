@@ -8,7 +8,7 @@ $(document).ready(async function () {
         }).replaceWith(function () { return this.data; })
 
     //Initial variables
-    const step1UrlFilterPrefix = 'http://daotao.vku.udn.vn/sv/khao-sat/cau-hoi-khao-sat/';
+    const step1UrlFilterPrefix = 'https://daotao.vku.udn.vn/sv/khao-sat/cau-hoi-khao-sat/';
     const step2UrlFilterPrefix = '/sv/khao-sat-hoc-phan?id=';
     var subjectsStep1 = [];
     var subjectsStep2 = [];
@@ -52,7 +52,7 @@ $(document).ready(async function () {
                     </div>
                 </div>
                 <div class="d-flex flex-row-reverse">
-                    <div style="text-align: right">© 2022 <a style="font-weight: bold" href="https://www.facebook.com/HungThinh0710/">Hưng Thịnh</a> - Năm tháng đó, tôi dùng cả thanh xuân để đánh giá học phần. </div>
+                    <div style="text-align: right">© 2022 <a style="font-weight: bold" href="https://www.facebook.com/HungThinhIT/">Hưng Thịnh</a> - Năm tháng đó, tôi dùng cả thanh xuân để đánh giá học phần. </div>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ $(document).ready(async function () {
             ? $("body > div > div > div.right_col > div > div.row").prepend(rawBody) : 
             $('.navbar-right').append(`
             <li class>
-                <a href="http://daotao.vku.udn.vn/sv/diem" class="user-profile dropdown-toggle" >
+                <a href="https://daotao.vku.udn.vn/sv/diem" class="user-profile dropdown-toggle" >
                     Xem điểm nhanh nè mọi ngườiiii!
                 </a>
             </li>`);
@@ -152,7 +152,7 @@ $(document).ready(async function () {
         //Check new version
 
         $.ajax({
-            url: 'https://api.github.com/repos/HungThinh0710/VKU-Score-Easy/tags',
+            url: 'https://api.github.com/repos/HungThinhIT/VKU-Score-Easy/tags',
             type: 'GET',
             success: function (data, textStatus, jQxhr) {
                 if (jQxhr.status == 200) {
@@ -160,7 +160,7 @@ $(document).ready(async function () {
                     isLastestVersion = payload[0].name === currentExtensionVersion;
                     isLastestVersion ? 
                         $('.phoenix_current_version').text("Đây là phiên bản mới nhất")
-                        : $('.phoenix_current_version').html(`Đã có phiên bản mới (v${payload[0].name}) <a style="font-weight: bold; color: red;" href="https://github.com/HungThinh0710/VKU-Score-Easy/releases">Cập nhật ngay</a>`)
+                        : $('.phoenix_current_version').html(`Đã có phiên bản mới (v${payload[0].name}) <a style="font-weight: bold; color: red;" href="https://github.com/HungThinhIT/VKU-Score-Easy/releases">Cập nhật ngay</a>`)
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
